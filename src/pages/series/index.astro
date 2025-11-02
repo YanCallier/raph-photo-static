@@ -1,0 +1,20 @@
+---
+const modules = import.meta.glob('../../../content/series/*.md', { eager: true });
+const series = Object.values(modules).map((m: any) => m.frontmatter);
+series.sort((a, b) => (a?.title || '').localeCompare(b?.title || ''));
+---
+<html lang="fr">
+  <head><meta charset="utf-8" /><title>Séries</title></head>
+  <body style="font-family:system-ui;max-width:960px;margin:auto;padding:2rem;">
+    <h1>Séries</h1>
+    <ul style="list-style:none;padding:0;display:grid;gap:1rem;">
+      {series.map((s) => (
+        <li>
+          <a href={`/series/${s.slug}/`} style="text-decoration:underline;">
+            {s.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>

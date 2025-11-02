@@ -10,5 +10,10 @@
   },
   "dependencies": {
     "astro": "^5.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "decap-cms": "^3.8.4",
+    "typescript": "^5.9.3"
   }
 }

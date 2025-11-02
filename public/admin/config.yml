@@ -1,0 +1,19 @@
+local_backend: true
+
+backend:
+  name: test-repo # on testera en local; on mettra Git Gateway/GitHub plus tard
+  branch: main
+
+media_folder: "public/photos"
+public_folder: "/photos"
+
+collections:
+  - name: "series"
+    label: "Séries"
+    folder: "content/series"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Texte", name: "body", widget: "markdown" }

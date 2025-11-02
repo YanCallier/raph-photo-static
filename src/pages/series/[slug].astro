@@ -1,0 +1,37 @@
+---
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../../../content/series/*.md', { eager: true });
+  return Object.values(modules).map((m: any) => ({
+    params: { slug: m.frontmatter.slug },
+    props: { fm: m.frontmatter, Content: m.Content },
+  }));
+}
+const { fm, Content } = Astro.props;
+const images = fm.images || [];
+---
+<html lang="fr">
+  <head><meta charset="utf-8" /><title>{fm.title}</title></head>
+  <body style="font-family:system-ui;max-width:1200px;margin:auto;padding:2rem;">
+    <header>
+      <a href="/series/">← Retour</a>
+      <h1>{fm.title}</h1>
+    </header>
+
+    <article style="margin:1rem 0;"><Content /></article>
+
+    {images.length > 0 && (
+      <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+        {images.map((img, i) => (
+          <figure style="margin:0" key={i}>
+            <img src={img.url} alt={img.title || fm.title} style="width:100%;height:auto;border-radius:8px;" />
+            {(img.title || img.caption) && (
+              <figcaption style="font-size:.9rem;color:#666;margin-top:.25rem;">
+                <strong>{img.title}</strong>{img.title && img.caption ? ' — ' : ''}{img.caption}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </section>
+    )}
+  </body>
+</html>
