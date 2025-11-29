@@ -1,0 +1,3 @@
+/admin/*    /admin/index.html   200
+# fallback global
+/*          /index.html         200
