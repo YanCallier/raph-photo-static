@@ -4,6 +4,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Raph Photo</title>
+
+    <!-- Charger Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script>
+      // Si un token est présent, Identity affichera automatiquement la modale
+      const hasIdentityToken =
+        window.location.hash.includes("recovery_token") ||
+        window.location.hash.includes("invite_token") ||
+        window.location.hash.includes("confirmation_token");
+
+      if (hasIdentityToken) {
+        // Initialise le widget qui va détecter le token et ouvrir la fenêtre
+        netlifyIdentity && netlifyIdentity.init();
+      }
+    </script>
   </head>
 
   <body style="font-family: system-ui; padding: 2rem">
