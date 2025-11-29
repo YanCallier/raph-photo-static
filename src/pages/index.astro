@@ -4,10 +4,30 @@
   <head>
     <meta charset="utf-8" />
     <title>Raph Photo</title>
-    <!-- Redirection instantanée vers la liste des séries -->
-    <meta http-equiv="refresh" content="0; url=/series/">
-    <link rel="canonical" href="/series/">
+
+    <!-- IMPORTANT :
+         On ne redirige plus immédiatement. On vérifie d'abord
+         si Netlify Identity a besoin de gérer un token (#recovery_token, etc.)
+         dans l'URL. Si oui, on NE redirige pas.
+    -->
+    <script>
+      const hash = window.location.hash || "";
+      const hasIdentityToken =
+        hash.includes("recovery_token") ||
+        hash.includes("invite_token") ||
+        hash.includes("confirmation_token");
+
+      // Si aucun token Identity → on redirige après une très courte pause
+      if (!hasIdentityToken) {
+        setTimeout(() => {
+          window.location.href = "/series/";
+        }, 50); // 50ms suffit à laisser l’init de Netlify Identity s’exécuter
+      }
+    </script>
+
+    <link rel="canonical" href="/series/" />
   </head>
+
   <body style="font-family:system-ui;padding:2rem">
     Redirection vers <a href="/series/">les séries</a>…
   </body>
