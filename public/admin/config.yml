@@ -1,7 +1,5 @@
-local_backend: true
-
 backend:
-  name: test-repo # on testera en local; on mettra Git Gateway/GitHub plus tard
+  name: git-gateway
   branch: main
 
 media_folder: "public/photos"
@@ -17,3 +15,10 @@ collections:
       - { label: "Titre", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Texte", name: "body", widget: "markdown" }
+      - label: "Photos"
+        name: "images"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "url", widget: "image" }
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Légende", name: "caption", widget: "text" }
