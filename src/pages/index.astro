@@ -5,23 +5,29 @@
     <meta charset="utf-8" />
     <title>Raph Photo</title>
 
-    <!-- IMPORTANT :
-         On ne redirige plus immédiatement. On vérifie d'abord
-         si Netlify Identity a besoin de gérer un token (#recovery_token, etc.)
-         dans l'URL. Si oui, on NE redirige pas.
-    -->
+    <!-- Charger Netlify Identity pour gérer les tokens -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <script>
+      // Détecter un éventuel token Identity dans l'URL
       const hash = window.location.hash || "";
       const hasIdentityToken =
         hash.includes("recovery_token") ||
         hash.includes("invite_token") ||
         hash.includes("confirmation_token");
 
-      // Si aucun token Identity → on redirige après une très courte pause
-      if (!hasIdentityToken) {
+      if (hasIdentityToken) {
+        // IMPORTANT :
+        // Lancer le widget Identity tout de suite
+        window.netlifyIdentity && window.netlifyIdentity.on("init", () => {
+          // Cela va ouvrir automatiquement la fenêtre de reset / confirmation
+        });
+        window.netlifyIdentity && window.netlifyIdentity.init();
+      } else {
+        // Pas de token → on redirige comme avant
         setTimeout(() => {
           window.location.href = "/series/";
-        }, 50); // 50ms suffit à laisser l’init de Netlify Identity s’exécuter
+        }, 50);
       }
     </script>
 
