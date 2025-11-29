@@ -4,37 +4,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Raph Photo</title>
-
-    <!-- Charger Netlify Identity pour gérer les tokens -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    <script>
-      // Détecter un éventuel token Identity dans l'URL
-      const hash = window.location.hash || "";
-      const hasIdentityToken =
-        hash.includes("recovery_token") ||
-        hash.includes("invite_token") ||
-        hash.includes("confirmation_token");
-
-      if (hasIdentityToken) {
-        // IMPORTANT :
-        // Lancer le widget Identity tout de suite
-        window.netlifyIdentity && window.netlifyIdentity.on("init", () => {
-          // Cela va ouvrir automatiquement la fenêtre de reset / confirmation
-        });
-        window.netlifyIdentity && window.netlifyIdentity.init();
-      } else {
-        // Pas de token → on redirige comme avant
-        setTimeout(() => {
-          window.location.href = "/series/";
-        }, 50);
-      }
-    </script>
-
-    <link rel="canonical" href="/series/" />
   </head>
 
-  <body style="font-family:system-ui;padding:2rem">
-    Redirection vers <a href="/series/">les séries</a>…
+  <body style="font-family: system-ui; padding: 2rem">
+    <h1>Accueil</h1>
+    <p>Cette page sera ta future home.</p>
+    <p><a href="/series/">Voir les séries</a></p>
   </body>
 </html>
