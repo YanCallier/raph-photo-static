@@ -17,6 +17,12 @@ for (const serie of series) {
 const hero = allImages.length
   ? allImages[Math.floor(Math.random() * allImages.length)]
   : null;
+
+// Fonction teaser
+const teaser =
+  image.description.length > 120
+    ? image.description.slice(0, 120) + "…"
+    : image.description;
 ---
 
 <!DOCTYPE html>
@@ -47,9 +53,11 @@ const hero = allImages.length
     <main class="hero">
       {hero && <img src={hero} alt="" />
 <div class="overlay">
-  <h2>Série 2</h2>
-  <a href="/series/serie-2">Voir la série →</a>
+  <h2>{image.title}</h2>
+  <p>{teaser}</p>
+  <a href={`/series/${serie.slug}`}>Voir la série →</a>
 </div>
+
 
 }
     </main>

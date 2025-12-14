@@ -108,3 +108,10 @@ nav a:hover {
   opacity: 1;
 }
 
+.overlay p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
