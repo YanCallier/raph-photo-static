@@ -2,7 +2,7 @@
 import { Astro } from "astro";
 
 // Charger les séries pour le menu
-const series = await Astro.glob("../content/series/*.md");
+const series = await Astro.glob("content/series/*.md");
 
 // Récupérer toutes les images
 let allImages = [];
