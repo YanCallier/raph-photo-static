@@ -1,19 +1,19 @@
 ---
+/* CSS home */
 import "../styles/home.css";
----
-const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 
+/* Chargement des séries */
+const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 const series = Object.values(modules);
 
-
-// Récupérer toutes les images
+/* Récupérer toutes les images */
 let allImages = [];
 for (const serie of series) {
   const imgs = serie.frontmatter?.images || [];
   allImages.push(...imgs.map(i => i.url));
 }
 
-// Image aléatoire
+/* Image aléatoire */
 const hero = allImages.length
   ? allImages[Math.floor(Math.random() * allImages.length)]
   : null;
@@ -21,12 +21,11 @@ const hero = allImages.length
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <title>Raphaelle Brui</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-
+  <head>
+    <meta charset="utf-8" />
+    <title>Raphaelle Brui</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 
   <body>
 
@@ -68,7 +67,11 @@ const hero = allImages.length
         }
       });
     </script>
-<script src="/src/scripts/home.js" defer></script>
+
+    <!-- JS home -->
+    <script type="module">
+      import "../scripts/home.js";
+    </script>
 
   </body>
 </html>
