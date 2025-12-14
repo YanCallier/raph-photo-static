@@ -1,28 +1,25 @@
 ---
 export async function getStaticPaths() {
-  const modules = import.meta.glob("../../../content/series/*.md", {
-    eager: true,
-  });
+  const allSeries = Object.values(
+    import.meta.glob("../../../content/series/*.md", { eager: true })
+  );
 
-  return Object.values(modules).map((serie) => ({
+  return allSeries.map((serie) => ({
     params: {
       slug: serie.frontmatter.slug,
     },
     props: {
       serie,
+      allSeries,
     },
   }));
 }
 
-const { serie } = Astro.props;
-const { title, images } = serie.frontmatter;
+const { serie, allSeries } = Astro.props;
 
-// 🔑 IMPORTANT : Content est DÉJÀ là
+const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,15 +37,18 @@ const Content = serie.Content;
     <!-- HEADER GLOBAL (identique à la home) -->
     <header>
       <div class="brand">Raphaelle Brui</div>
-      <nav>
-        <a href="/">Accueil</a>
-        {Object.values(modules).map(s => (
-          <a href={`/series/${s.frontmatter.slug}/`}>
-            {s.frontmatter.title}
-          </a>
-        ))}
-        <a href="/contact/">Contact</a>
-      </nav>
+<nav>
+  <a href="/">Accueil</a>
+
+  {allSeries.map((s) => (
+    <a href={`/series/${s.frontmatter.slug}/`}>
+      {s.frontmatter.title}
+    </a>
+  ))}
+
+  <a href="/contact/">Contact</a>
+</nav>
+
     </header>
 
     <!-- CONTENU DE LA SÉRIE -->
