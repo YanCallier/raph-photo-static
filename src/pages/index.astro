@@ -26,11 +26,11 @@ const image = images.length
 
 /* Teaser */
 let teaser = "";
-if (image?.description) {
+if (image?.caption) {
   teaser =
-    image.description.length > 120
-      ? image.description.slice(0, 120) + "…"
-      : image.description;
+    image.caption.length > 120
+      ? image.caption.slice(0, 120) + "…"
+      : image.caption;
 }
 
 
