@@ -4,7 +4,9 @@
 const { title } = Astro.props;
 
 // series fetch
-const series = await Astro.glob("../content/series/*.md");
+const series = Object.values(
+  import.meta.glob("../../content/series/*.md", { eager: true })
+);
 ---
 
 <!DOCTYPE html>
