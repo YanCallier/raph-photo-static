@@ -1,6 +1,7 @@
 ---
 import "../../styles/home.css";
 
+// Génération des pages statiques
 export async function getStaticPaths() {
   const allSeries = Object.values(
     import.meta.glob("../../../content/series/*.md", { eager: true })
@@ -18,7 +19,6 @@ export async function getStaticPaths() {
 }
 
 const { serie, allSeries } = Astro.props;
-
 const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
@@ -31,49 +31,63 @@ const Content = serie.Content;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
-  <body>
+  <body class="page-series">
 
-    <!-- HEADER GLOBAL (identique à la home) -->
-    <header>
-      <div class="brand">Raphaelle Brui</div>
-<nav>
-  <a href="/">Accueil</a>
+    <!-- HEADER GLOBAL -->
+    <header class="site-header">
+      <div class="brand">
+        <a href="/">Raphaelle Brui</a>
+      </div>
 
-  {allSeries.map((s) => (
-    <a href={`/series/${s.frontmatter.slug}/`}>
-      {s.frontmatter.title}
-    </a>
-  ))}
+      <nav class="main-nav">
+        <a href="/">Accueil</a>
 
-  <a href="/contact/">Contact</a>
-</nav>
+        {allSeries.map((s) => (
+          <a
+            href={`/series/${s.frontmatter.slug}/`}
+            class={s.frontmatter.slug === serie.frontmatter.slug ? "active" : ""}
+          >
+            {s.frontmatter.title}
+          </a>
+        ))}
 
+        <a href="/contact/">Contact</a>
+      </nav>
     </header>
 
     <!-- CONTENU DE LA SÉRIE -->
-<main class="series">
+    <main class="series">
 
-  <header class="series-header">
-    <h1>{title}</h1>
-    <div class="series-text">
-      <Content />
-    </div>
-  </header>
+      <!-- TEXTE DE PRÉSENTATION -->
+      <section class="series-intro">
+        <h1>{title}</h1>
 
-  <section class="series-images">
-    {images.map((image) => (
-      <figure>
-        <img src={image.url} alt={image.title || ""} />
-        <figcaption>
-          {image.title && <strong>{image.title}</strong>}
-          {image.caption && <p>{image.caption}</p>}
-        </figcaption>
-      </figure>
-    ))}
-  </section>
+        <div class="series-text">
+          <Content />
+        </div>
+      </section>
 
-</main>
+      <!-- IMAGES -->
+      <section class="series-images">
+        {images.map((image) => (
+          <figure class="series-image">
+            <img
+              src={image.url}
+              alt={image.title || ""}
+              loading="lazy"
+            />
 
+            {(image.title || image.caption) && (
+              <figcaption>
+                {image.title && <strong>{image.title}</strong>}
+                {image.caption && <p>{image.caption}</p>}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </section>
+
+    </main>
 
   </body>
 </html>
