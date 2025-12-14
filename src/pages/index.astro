@@ -1,7 +1,10 @@
 ---
+import "../styles/home.css";
+---
 const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 
 const series = Object.values(modules);
+
 
 // Récupérer toutes les images
 let allImages = [];
@@ -22,8 +25,6 @@ const hero = allImages.length
   <meta charset="utf-8" />
   <title>Raphaelle Brui</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="stylesheet" href="../styles/home.css" />
 </head>
 
 
