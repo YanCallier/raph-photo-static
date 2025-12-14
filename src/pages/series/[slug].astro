@@ -1,25 +1,25 @@
 ---
-const { slug } = Astro.params;
+export async function getStaticPaths() {
+  const modules = import.meta.glob("../../../content/series/*.md", {
+    eager: true,
+  });
 
-// Charger toutes les séries
-const modules = import.meta.glob("../../../content/series/*.md", {
-  eager: true,
-});
-
-// Trouver la série
-const serie = Object.values(modules).find(
-  (s) => s.frontmatter.slug === slug
-);
-
-if (!serie) {
-  throw new Error(`Série introuvable : ${slug}`);
+  return Object.values(modules).map((serie) => ({
+    params: {
+      slug: serie.frontmatter.slug,
+    },
+    props: {
+      serie,
+    },
+  }));
 }
 
-const { title, images } = serie.frontmatter;
+const { serie } = Astro.props;
 
-// 🔑 Rendu markdown CORRECT
+const { title, images } = serie.frontmatter;
 const { Content } = await serie.render();
 ---
+
 
 
 <!DOCTYPE html>
@@ -50,29 +50,29 @@ const { Content } = await serie.render();
     </header>
 
     <!-- CONTENU DE LA SÉRIE -->
-    <main class="series">
+<main class="series">
 
-      <header class="series-header">
-        <h1>{title}</h1>
-<div class="series-text">
-  <Content />
-</div>
+  <header class="series-header">
+    <h1>{title}</h1>
+    <div class="series-text">
+      <Content />
+    </div>
+  </header>
 
-      </header>
+  <section class="series-images">
+    {images.map((image) => (
+      <figure>
+        <img src={image.url} alt={image.title || ""} />
+        <figcaption>
+          {image.title && <strong>{image.title}</strong>}
+          {image.caption && <p>{image.caption}</p>}
+        </figcaption>
+      </figure>
+    ))}
+  </section>
 
-      <section class="series-images">
-        {images.map((image) => (
-          <figure>
-            <img src={image.url} alt={image.title || ""} />
-            <figcaption>
-              {image.title && <strong>{image.title}</strong>}
-              {image.caption && <p>{image.caption}</p>}
-            </figcaption>
-          </figure>
-        ))}
-      </section>
+</main>
 
-    </main>
 
   </body>
 </html>
