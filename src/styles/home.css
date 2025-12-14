@@ -115,3 +115,51 @@ nav a:hover {
   margin-bottom: 12px;
 }
 
+/* PAGE SÉRIE */
+
+.series {
+  max-width: 960px;
+  margin: 140px auto;
+  padding: 0 24px;
+}
+
+.series-header {
+  margin-bottom: 100px;
+}
+
+.series-header h1 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.series-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.series-images figure {
+  margin-bottom: 100px;
+}
+
+.series-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.series-images figcaption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.series-images figcaption strong {
+  display: block;
+  font-weight: 500;
+  color: #ddd;
+  margin-bottom: 4px;
+}
+
+

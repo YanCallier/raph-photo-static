@@ -1,37 +1,76 @@
 ---
-export async function getStaticPaths() {
-  const modules = import.meta.glob('../../../content/series/*.md', { eager: true });
-  return Object.values(modules).map((m: any) => ({
-    params: { slug: m.frontmatter.slug },
-    props: { fm: m.frontmatter, Content: m.Content },
-  }));
+import { Markdown } from "astro/components";
+
+const { slug } = Astro.params;
+
+// Charger toutes les séries
+const modules = import.meta.glob("../../../content/series/*.md", {
+  eager: true,
+});
+
+// Trouver la série correspondant au slug
+const serie = Object.values(modules).find(
+  (s) => s.frontmatter.slug === slug
+);
+
+if (!serie) {
+  throw new Error(`Série introuvable : ${slug}`);
 }
-const { fm, Content } = Astro.props;
-const images = fm.images || [];
+
+const { title, images } = serie.frontmatter;
+const body = serie.rawContent();
 ---
+
+<!DOCTYPE html>
 <html lang="fr">
-  <head><meta charset="utf-8" /><title>{fm.title}</title></head>
-  <body style="font-family:system-ui;max-width:1200px;margin:auto;padding:2rem;">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title} – Raphaelle Brui</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Réutilise le CSS global (home) -->
+    <link rel="stylesheet" href="/styles/home.css" />
+  </head>
+
+  <body>
+
+    <!-- HEADER GLOBAL (identique à la home) -->
     <header>
-      <a href="/series/">← Retour</a>
-      <h1>{fm.title}</h1>
+      <div class="brand">Raphaelle Brui</div>
+      <nav>
+        <a href="/">Accueil</a>
+        {Object.values(modules).map(s => (
+          <a href={`/series/${s.frontmatter.slug}/`}>
+            {s.frontmatter.title}
+          </a>
+        ))}
+        <a href="/contact/">Contact</a>
+      </nav>
     </header>
 
-    <article style="margin:1rem 0;"><Content /></article>
+    <!-- CONTENU DE LA SÉRIE -->
+    <main class="series">
 
-    {images.length > 0 && (
-      <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
-        {images.map((img, i) => (
-          <figure style="margin:0" key={i}>
-            <img src={img.url} alt={img.title || fm.title} style="width:100%;height:auto;border-radius:8px;" />
-            {(img.title || img.caption) && (
-              <figcaption style="font-size:.9rem;color:#666;margin-top:.25rem;">
-                <strong>{img.title}</strong>{img.title && img.caption ? ' — ' : ''}{img.caption}
-              </figcaption>
-            )}
+      <header class="series-header">
+        <h1>{title}</h1>
+        <div class="series-text">
+          <Markdown content={body} />
+        </div>
+      </header>
+
+      <section class="series-images">
+        {images.map((image) => (
+          <figure>
+            <img src={image.url} alt={image.title || ""} />
+            <figcaption>
+              {image.title && <strong>{image.title}</strong>}
+              {image.caption && <p>{image.caption}</p>}
+            </figcaption>
           </figure>
         ))}
       </section>
-    )}
+
+    </main>
+
   </body>
 </html>
