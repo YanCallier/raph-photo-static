@@ -1,28 +1,35 @@
 ---
-/* CSS home */
+/* CSS */
 import "../styles/home.css";
 
-/* Chargement des séries */
+/* Séries */
 const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 const series = Object.values(modules);
 
-/* Récupérer toutes les images */
-let allImages = [];
+/* Images enrichies */
+const images = [];
+
 for (const serie of series) {
   const imgs = serie.frontmatter?.images || [];
-  allImages.push(...imgs.map(i => i.url));
+  for (const img of imgs) {
+    images.push({
+      ...img,
+      serieSlug: serie.frontmatter.slug,
+    });
+  }
 }
 
 /* Image aléatoire */
-const hero = allImages.length
-  ? allImages[Math.floor(Math.random() * allImages.length)]
+const image = images.length
+  ? images[Math.floor(Math.random() * images.length)]
   : null;
 
-// Fonction teaser
+/* Teaser */
 const teaser =
-  image.description.length > 120
+  image?.description && image.description.length > 120
     ? image.description.slice(0, 120) + "…"
-    : image.description;
+    : image?.description ?? "";
+
 ---
 
 <!DOCTYPE html>
@@ -50,17 +57,22 @@ const teaser =
     </header>
 
     <!-- HERO IMAGE -->
-    <main class="hero">
-      {hero && <img src={hero} alt="" />
-<div class="overlay">
-  <h2>{image.title}</h2>
-  <p>{teaser}</p>
-  <a href={`/series/${serie.slug}`}>Voir la série →</a>
-</div>
+<main class="hero">
+  {image && (
+    <>
+      <img src={image.url} alt={image.title} />
 
+      <div class="overlay">
+        <h2>{image.title}</h2>
+        <p>{teaser}</p>
+        <a href={`/series/${image.serieSlug}/`}>
+          Voir la série →
+        </a>
+      </div>
+    </>
+  )}
+</main>
 
-}
-    </main>
 
     <!-- NETLIFY IDENTITY (INDISPENSABLE) -->
     <script
