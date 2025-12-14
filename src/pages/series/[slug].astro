@@ -1,6 +1,4 @@
 ---
-import { Markdown } from "astro/components";
-
 const { slug } = Astro.params;
 
 // Charger toutes les séries
@@ -8,7 +6,7 @@ const modules = import.meta.glob("../../../content/series/*.md", {
   eager: true,
 });
 
-// Trouver la série correspondant au slug
+// Trouver la série
 const serie = Object.values(modules).find(
   (s) => s.frontmatter.slug === slug
 );
@@ -18,8 +16,11 @@ if (!serie) {
 }
 
 const { title, images } = serie.frontmatter;
-const body = serie.rawContent();
+
+// 🔑 Rendu markdown CORRECT
+const { Content } = await serie.render();
 ---
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,9 +54,10 @@ const body = serie.rawContent();
 
       <header class="series-header">
         <h1>{title}</h1>
-        <div class="series-text">
-          <Markdown content={body} />
-        </div>
+<div class="series-text">
+  <Content />
+</div>
+
       </header>
 
       <section class="series-images">
