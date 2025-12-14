@@ -1,0 +1,79 @@
+---
+/* Layout global du site */
+
+const { title } = Astro.props;
+
+// series fetch
+const series = await Astro.glob("../content/series/*.md");
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 20;
+        background: rgba(0,0,0,0.4);
+      }
+
+      .brand {
+        font-size: 1.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      nav a {
+        margin-left: 1.8rem;
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: opacity 0.2s;
+      }
+
+      nav a:hover {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- HEADER GLOBAL -->
+    <header>
+      <div class="brand">Raphaelle Brui</div>
+
+      <nav>
+        <a href="/">Accueil</a>
+
+        {series.map(serie => (
+          <a href={`/series/${serie.frontmatter.slug}/`}>
+            {serie.frontmatter.title}
+          </a>
+        ))}
+
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <slot />
+
+  </body>
+</html>

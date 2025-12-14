@@ -1,0 +1,39 @@
+---
+---
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Raph Photo</title>
+  </head>
+
+  <body style="font-family: system-ui; padding: 2rem">
+
+    <h1>Accueil</h1>
+    <p>Cette page sera ta future home.</p>
+    <p><a href="/series/">Voir les séries</a></p>
+
+    <!-- IMPORTANT : le script doit être dans le body, sans type=module -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash || "";
+
+        const hasToken =
+          hash.includes("recovery_token") ||
+          hash.includes("invite_token") ||
+          hash.includes("confirmation_token");
+
+        if (hasToken) {
+          // Le widget Identity DOIT être prêt ici
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.init();
+          } else {
+            console.error("Netlify Identity not available yet");
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>

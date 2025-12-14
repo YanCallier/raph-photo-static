@@ -1,39 +1,70 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
+// On récupère toutes les séries
+const series = await Astro.glob("../content/series/*.md");
+
+// On rassemble toutes les images des séries
+let allImages = [];
+
+for (const serie of series) {
+  const imgs = serie.frontmatter.images || [];
+  allImages = allImages.concat(imgs.map(i => i.url));
+}
+
+// Choix aléatoire
+const hero = allImages.length
+  ? allImages[Math.floor(Math.random() * allImages.length)]
+  : null;
 ---
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Raph Photo</title>
-  </head>
 
-  <body style="font-family: system-ui; padding: 2rem">
+<Layout title="Raphaelle Brui">
+  <main class="hero">
+    {hero ? (
+      <img src={hero} alt="" />
+    ) : (
+      <div class="no-image">Aucune image n'est disponible</div>
+    )}
 
-    <h1>Accueil</h1>
-    <p>Cette page sera ta future home.</p>
-    <p><a href="/series/">Voir les séries</a></p>
+    <div class="overlay"></div>
+  </main>
 
-    <!-- IMPORTANT : le script doit être dans le body, sans type=module -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <style>
+    .hero {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const hash = window.location.hash || "";
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
 
-        const hasToken =
-          hash.includes("recovery_token") ||
-          hash.includes("invite_token") ||
-          hash.includes("confirmation_token");
+    .no-image {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #aaa;
+      font-size: 1.2rem;
+    }
 
-        if (hasToken) {
-          // Le widget Identity DOIT être prêt ici
-          if (window.netlifyIdentity) {
-            window.netlifyIdentity.init();
-          } else {
-            console.error("Netlify Identity not available yet");
-          }
-        }
-      });
-    </script>
-
-  </body>
-</html>
+    /* overlay futur */
+    .overlay {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      display: none; /* on l'activera quand on mettra du contenu */
+    }
+  </style>
+</Layout>
