@@ -15,10 +15,12 @@ export async function getStaticPaths() {
 }
 
 const { serie } = Astro.props;
-
 const { title, images } = serie.frontmatter;
-const { Content } = await serie.render();
+
+// 🔑 IMPORTANT : Content est DÉJÀ là
+const Content = serie.Content;
 ---
+
 
 
 
