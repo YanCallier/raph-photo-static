@@ -1,6 +1,6 @@
 ---
-/* CSS */
 import "../styles/home.css";
+import Layout from "../layouts/Layout.astro";
 
 /* Séries */
 const modules = import.meta.glob("../../content/series/*.md", { eager: true });
@@ -45,21 +45,7 @@ if (image?.caption) {
   </head>
 
   <body class="home">
-
-    <!-- HEADER -->
-    <header>
-      <div class="brand">Raphaelle Brui</div>
-      <nav>
-        <a href="/">Accueil</a>
-        {series.map(s => (
-          <a href={`/series/${s.frontmatter.slug}/`}>
-            {s.frontmatter.title}
-          </a>
-        ))}
-        <a href="/contact/">Contact</a>
-      </nav>
-    </header>
-
+  <Layout title="Raphaelle Brui">
     <!-- HERO IMAGE -->
 <main class="hero">
   {image && (
@@ -76,6 +62,7 @@ if (image?.caption) {
     </>
   )}
 </main>
+</Layout>
 
 
     <!-- NETLIFY IDENTITY (INDISPENSABLE) -->
