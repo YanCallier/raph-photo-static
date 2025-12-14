@@ -1,13 +1,12 @@
 ---
-import { Astro } from "astro";
+const modules = import.meta.glob("./content/series/*.md", { eager: true });
 
-// Charger les séries pour le menu
-const series = await Astro.glob("content/series/*.md");
+const series = Object.values(modules);
 
 // Récupérer toutes les images
 let allImages = [];
 for (const serie of series) {
-  const imgs = serie.frontmatter.images || [];
+  const imgs = serie.frontmatter?.images || [];
   allImages.push(...imgs.map(i => i.url));
 }
 
@@ -16,6 +15,7 @@ const hero = allImages.length
   ? allImages[Math.floor(Math.random() * allImages.length)]
   : null;
 ---
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
