@@ -17,18 +17,8 @@ const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
 
-
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title} – Raphaelle Brui</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-
-  <body class="page-series">
-<Layout title={`${title} – Raphaelle Brui`}>
-  <main class="series">
+<Layout title={`${title} – Raphaelle Brui`} bodyClass="series">
+  <main class="page-series">
 
     <section class="series-intro">
       <h1>{title}</h1>
@@ -38,13 +28,15 @@ const Content = serie.Content;
     </section>
 
     <section class="series-images">
-      {images.map(image => (
+      {images.map((image) => (
         <figure>
-          <img src={image.url} alt={image.title || ""} />
-          <figcaption>
-            {image.title && <strong>{image.title}</strong>}
-            {image.caption && <p>{image.caption}</p>}
-          </figcaption>
+          <img src={image.url} alt={image.title ?? ""} />
+          {(image.title || image.caption) && (
+            <figcaption>
+              {image.title && <strong>{image.title}</strong>}
+              {image.caption && <p>{image.caption}</p>}
+            </figcaption>
+          )}
         </figure>
       ))}
     </section>
@@ -52,6 +44,3 @@ const Content = serie.Content;
   </main>
 </Layout>
 
-
-  </body>
-</html>

@@ -44,24 +44,23 @@ if (image?.caption) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
-  <body class="home">
-  <Layout title="Raphaelle Brui">
-    <!-- HERO IMAGE -->
-<main class="hero">
-  {image && (
-    <>
-      <img src={image.url} alt={image.title} />
 
-      <div class="overlay">
-        <h2>{image.title}</h2>
-        <p>{teaser}</p>
-        <a href={`/series/${image.serieSlug}/`}>
-          Voir la série →
-        </a>
-      </div>
-    </>
-  )}
-</main>
+<Layout title="Raphaelle Brui" bodyClass="home">
+  <main class="hero">
+    {image && (
+      <>
+        <img src={image.url} alt={image.title} />
+
+        <div class="overlay">
+          <h2>{image.title}</h2>
+          <p>{teaser}</p>
+          <a href={`/series/${image.serieSlug}/`}>
+            Voir la série →
+          </a>
+        </div>
+      </>
+    )}
+  </main>
 </Layout>
 
 

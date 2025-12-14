@@ -1,7 +1,7 @@
 ---
 /* Layout global du site */
 
-const { title } = Astro.props;
+const { title = "Raphaelle Brui", bodyClass = "" } = Astro.props;
 
 // series fetch
 const series = Object.values(
@@ -56,7 +56,7 @@ const series = Object.values(
     </style>
   </head>
 
-  <body>
+  <body class={bodyClass}>
 
     <!-- HEADER GLOBAL -->
     <header>
