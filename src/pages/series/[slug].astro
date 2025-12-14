@@ -1,4 +1,6 @@
 ---
+import "../../styles/home.css";
+
 export async function getStaticPaths() {
   const allSeries = Object.values(
     import.meta.glob("../../../content/series/*.md", { eager: true })
@@ -27,9 +29,6 @@ const Content = serie.Content;
     <meta charset="utf-8" />
     <title>{title} – Raphaelle Brui</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Réutilise le CSS global (home) -->
-    <link rel="stylesheet" href="/styles/home.css" />
   </head>
 
   <body>
