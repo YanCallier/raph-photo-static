@@ -1,6 +1,6 @@
 ---
 /* Layout global du site */
-
+import "./layout.css";
 const { title = "Raphaelle Brui", bodyClass = "" } = Astro.props;
 
 // series fetch
@@ -14,56 +14,12 @@ const series = Object.values(
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="/scripts/globalScript.js"></script>
     <title>{title}</title>
 
     <style>
-      /* RESET GLOBAL */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-      }
 
-      .global-container{
-        padding: 80px;
-      }
 
-      header {
-        position: fixed;
-        /* position: absolute;
-        top: 0; */
-        color: #fff;
-        width: 100%;
-        height:80px;
-        padding: 1.2rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 20;
-        background: rgb(26, 26, 26)
-      }
-
-      .brand {
-        font-size: 1.8rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-      }
-
-      nav a {
-        margin-left: 1.8rem;
-        color: white;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: opacity 0.2s;
-      }
-
-      nav a:hover {
-        opacity: 0.6;
-      }
     </style>
   </head>
 
@@ -90,5 +46,6 @@ const series = Object.values(
     <slot />
     </div>
 
+    <footer></footer>
   </body>
 </html>

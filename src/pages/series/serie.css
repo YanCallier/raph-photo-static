@@ -1,0 +1,50 @@
+.series {
+  /* max-width: 960px;
+  margin: 140px auto;
+  padding: 0 24px;
+  padding-top: 64px; */
+   padding-top: 40px
+}
+
+.series-intro {
+  margin-bottom: 50px;
+}
+
+.series-intro h1 {
+  font-size: 2.2rem;
+  /* font-weight: 400; */
+  margin-bottom: 24px;
+}
+
+.series-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  /* color: #ccc; */
+}
+
+.series-images figure {
+  margin: 0;
+  margin-bottom: 100px;
+  display: flex;
+  gap: 20px;
+}
+
+.series-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.series-images figcaption {
+  /* margin-top: 12px; */
+  font-size: 0.9rem;
+  /* color: #aaa; */
+  min-width: 250px;
+}
+
+.series-images figcaption strong {
+  display: block;
+  font-weight: 500;
+  /* color: #ddd; */
+  margin-bottom: 4px;
+}

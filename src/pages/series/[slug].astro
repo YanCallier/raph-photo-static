@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import "../../styles/home.css";
+import "./serie.css";
 
 export async function getStaticPaths() {
   const series = Object.values(
@@ -18,8 +18,8 @@ const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
 
-<Layout bodyClass="series">
-  <main class="page-series">
+<Layout>
+  <main class="series">
 
     <section class="series-intro">
       <h1>{title}</h1>
@@ -31,7 +31,7 @@ const Content = serie.Content;
     <section class="series-images">
       {images.map((image) => (
         <figure>
-          <img src={image.url} alt={image.title ?? ""} />
+          <img src={image.url} alt={image.title ?? ""} class="fullscreen-image"/>
           {(image.title || image.caption) && (
             <figcaption>
               {image.title && <strong>{image.title}</strong>}
