@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import "../../styles/home.css";
 
 export async function getStaticPaths() {
   const series = Object.values(
@@ -17,7 +18,7 @@ const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
 
-<Layout title={`${title} – Raphaelle Brui`} bodyClass="series">
+<Layout bodyClass="series">
   <main class="page-series">
 
     <section class="series-intro">

@@ -1,92 +1,21 @@
-/* RESET GLOBAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #0e0e0e;
-  color: #eee;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
 .home {
   height: 100vh;
   overflow: hidden;
 }
 
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  padding: 0 40px;
-  z-index: 10;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0)
-  );
-}
-
-.header-left {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-
-.brand {
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
-  font-weight: 400;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  gap: 24px;
-}
-
-nav a {
-  color: #eee;
-  text-decoration: none;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-nav a:hover {
-  opacity: 1;
-}
-
-/* HERO */
 .hero {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* PLEIN ÉCRAN */
+  /* position: relative; */
+  /* width: 100%; */
+  /* height: 100vh; */
 }
 
 .hero img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* IMAGE PLEINE PAGE PROPRE */
-  display: block;
+  /* height: 100%; */
+  /* object-fit: cover; */
+  /* display: block; */
 }
 
-/* OVERLAY */
 .overlay {
   position: absolute;
   bottom: 40px;
@@ -129,30 +58,34 @@ nav a:hover {
 /* PAGE SÉRIE */
 
 .series {
-  max-width: 960px;
+  /* max-width: 960px;
   margin: 140px auto;
   padding: 0 24px;
-  padding-top: 64px;
+  padding-top: 64px; */
 }
 
-.series-header {
-  margin-bottom: 100px;
+.series-intro {
+  margin-bottom: 50px;
 }
 
-.series-header h1 {
+.series-intro h1 {
   font-size: 2.2rem;
-  font-weight: 400;
+  /* font-weight: 400; */
   margin-bottom: 24px;
 }
 
 .series-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ccc;
+  /* color: #ccc; */
 }
 
 .series-images figure {
+  margin: 0;
   margin-bottom: 100px;
+  display: flex;
+  gap: 20px;
+  min-width: 200px;
 }
 
 .series-images img {
@@ -162,16 +95,14 @@ nav a:hover {
 }
 
 .series-images figcaption {
-  margin-top: 12px;
+  /* margin-top: 12px; */
   font-size: 0.9rem;
-  color: #aaa;
+  /* color: #aaa; */
 }
 
 .series-images figcaption strong {
   display: block;
   font-weight: 500;
-  color: #ddd;
+  /* color: #ddd; */
   margin-bottom: 4px;
 }
-
-
