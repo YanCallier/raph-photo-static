@@ -23,7 +23,7 @@
 .hero {
   position: fixed;
   inset: 0;
-  top:80px;
+  top: 80px;
   overflow: hidden;
 }
 
@@ -51,7 +51,7 @@
 
 .overlay {
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   left: 40px;
 
   max-width: 420px;

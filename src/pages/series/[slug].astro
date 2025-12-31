@@ -23,9 +23,6 @@ const Content = serie.Content;
 
     <section class="series-intro">
       <h1>{title}</h1>
-      <div class="series-text">
-        <Content />
-      </div>
     </section>
 
     <section class="series-images">
@@ -35,11 +32,14 @@ const Content = serie.Content;
           {(image.title || image.caption) && (
             <figcaption>
               {image.title && <strong>{image.title}</strong>}
-              {image.caption && <p>{image.caption}</p>}
+              {/* {image.caption && <p>{image.caption}</p>} */}
             </figcaption>
           )}
         </figure>
       ))}
+            <div class="series-text">
+        <Content />
+      </div>
     </section>
 
   </main>

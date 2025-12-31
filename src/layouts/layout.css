@@ -1,59 +1,74 @@
-      /* RESET GLOBAL */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-      }
+/* RESET GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
 
-      .global-container{
-        padding: 80px;
-      }
+.global-container {
+  padding: 80px;
+}
 
-      header {
-        position: fixed;
-        /* position: absolute;
+header {
+  position: fixed;
+  /* position: absolute;
         top: 0; */
-        color: #fff;
-        width: 100%;
-        height:80px;
-        padding: 1.2rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 20;
-        background: rgb(26, 26, 26)
-      }
+  color: #fff;
+  width: 100%;
+  height: 80px;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  background: rgb(26, 26, 26);
+}
 
-      footer {
-        position: fixed;
-        bottom:0;
-        width: 100%;
-        height:20px;
-        background: rgb(26, 26, 26);
-        z-index: 20;
-      }
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* height: 80px; */
+  background: rgb(26, 26, 26);
+  z-index: 20;
+  padding: 1.2rem 2rem;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
 
-      .brand {
-        font-size: 1.8rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-      }
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
 
-      nav a {
-        margin-left: 1.8rem;
-        color: white;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: opacity 0.2s;
-      }
+footer a:hover {
+  color: #fff;
+}
 
-      nav a:hover {
-        opacity: 0.6;
-      }
+.brand {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+nav a {
+  margin-left: 1.8rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+nav a:hover {
+  opacity: 0.6;
+}
 
 .fullscreen-image {
   cursor: url("../images/fullScreen32.png") 16 16, pointer;
@@ -61,15 +76,15 @@
 
 /* overlay d’indication */
 .fullscreen-image::after {
- content: "fullscreen view";
- font-size: 30px;
- font-weight:bold;
+  content: "fullscreen view";
+  font-size: 30px;
+  font-weight: bold;
   position: fixed;
   bottom: 24px;
   right: 24px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -86,4 +101,4 @@
   background: black;
   cursor: zoom-out;
   cursor: url("../images/exitFullScreen.png") 16 16, pointer;
-} 
+}

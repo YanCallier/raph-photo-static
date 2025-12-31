@@ -7,55 +7,54 @@ const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 const series = Object.values(modules);
 
 /* Images enrichies */
-const images = [];
+// const images = [];
 
-for (const serie of series) {
-  const imgs = serie.frontmatter?.images || [];
-  for (const img of imgs) {
-    images.push({
-      ...img,
-      serieSlug: serie.frontmatter.slug,
-    });
-  }
-}
+// for (const serie of series) {
+//   const imgs = serie.frontmatter?.images || [];
+//   for (const img of imgs) {
+//     images.push({
+//       ...img,
+//       serieSlug: serie.frontmatter.slug,
+//     });
+//   }
+// }
 
-/* Image aléatoire */
-const image = images.length
-  ? images[Math.floor(Math.random() * images.length)]
-  : null;
+// /* Image aléatoire */
+// const image = images.length
+//   ? images[Math.floor(Math.random() * images.length)]
+//   : null;
+
+const pickedSerie = series.length
+? series[Math.floor(Math.random() * series.length)]
+: null;
+
+const { title, images, Content, slug, rawContent } = pickedSerie.frontmatter;
+
+const pickedImage = images[Math.floor(Math.random() * images.length)]
 
 /* Teaser */
-let teaser = "";
-if (image?.caption) {
-  teaser =
-    image.caption.length > 120
-      ? image.caption.slice(0, 120) + "…"
-      : image.caption;
-}
+const raw = pickedSerie ? await pickedSerie.rawContent() : "";
+
+const plain = raw.replace(/\s+/g, " ").trim();
+const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
+console.log('!!!!!!!!!!!!!!!!!', plain)
 
 
 ---
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Raphaelle Brui</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
 
 
 <Layout title="Raphaelle Brui" bodyClass="home">
   <main class="hero">
-    {image && (
+    {pickedSerie && (
       <>
         {/* <img src={image.url} alt={image.title} /> */}
-        <div class="hero fullscreen-image" style={`--hero-image: url(${image.url});`} />
+        <div class="hero fullscreen-image" style={`--hero-image: url(${pickedImage.url});`} />
 
         <div class="overlay">
-          <h2>{image.title}</h2>
+          <h2>{title}</h2>
           <p>{teaser}</p>
-          <a href={`/series/${image.serieSlug}/`}>
+          <a href={`/series/${slug}/`}>
             Voir la série →
           </a>
         </div>
@@ -84,5 +83,3 @@ if (image?.caption) {
         }
       });
     </script>
-  </body>
-</html>

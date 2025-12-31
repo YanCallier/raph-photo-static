@@ -3,11 +3,11 @@
   margin: 140px auto;
   padding: 0 24px;
   padding-top: 64px; */
-   padding-top: 40px
+  padding-top: 40px;
 }
 
 .series-intro {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .series-intro h1 {
@@ -16,17 +16,28 @@
   margin-bottom: 24px;
 }
 
+.series-images {
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
 .series-text {
   font-size: 1rem;
   line-height: 1.6;
+  width: 250px;
   /* color: #ccc; */
 }
 
-.series-images figure {
+/* .series-images figure {
   margin: 0;
   margin-bottom: 100px;
   display: flex;
   gap: 20px;
+} */
+
+.series-images figure {
+  width: 100%;
 }
 
 .series-images img {
@@ -35,12 +46,10 @@
   display: block;
 }
 
-.series-images figcaption {
-  /* margin-top: 12px; */
+/* .series-images figcaption {
   font-size: 0.9rem;
-  /* color: #aaa; */
   min-width: 250px;
-}
+} */
 
 .series-images figcaption strong {
   display: block;
