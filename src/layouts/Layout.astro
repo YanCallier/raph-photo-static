@@ -26,10 +26,14 @@ const series = Object.values(
   <body class={bodyClass}>
 
     <!-- HEADER GLOBAL -->
-    <header>
+    <header class="site-header">
       <div class="brand">Raphaelle Brui</div>
 
-      <nav>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+      <nav data-nav>
         <a href="/">Accueil</a>
 
         {series.map(serie => (
@@ -64,5 +68,6 @@ const series = Object.values(
     </a>
   </nav>
     </footer>
+    <script type="module" src="/scripts/nav.js"></script>
   </body>
 </html>

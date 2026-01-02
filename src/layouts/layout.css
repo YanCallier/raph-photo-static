@@ -102,3 +102,61 @@ nav a:hover {
   cursor: zoom-out;
   cursor: url("../images/exitFullScreen.png") 16 16, pointer;
 }
+/* --- Burger button (hidden desktop) --- */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px 0;
+  background: currentColor;
+}
+
+/* --- Mobile burger behavior (override your current mobile scroll nav) --- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  /* disable the horizontal scroller you currently have */
+  header nav {
+    overflow: visible;
+    white-space: normal;
+  }
+
+  /* menu panel hidden by default */
+  header nav {
+    position: fixed;
+    top: 80px; /* header height in your CSS */
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 2rem;
+    background: rgb(26, 26, 26);
+    z-index: 19; /* under header (20), above page */
+  }
+
+  header nav a {
+    margin-left: 0;
+    padding: 12px 0;
+  }
+
+  header.is-open nav {
+    display: flex;
+  }
+
+  .global-container {
+    padding: 0;
+    padding-top: 80px;
+  }
+}

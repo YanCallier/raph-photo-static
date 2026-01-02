@@ -29,12 +29,7 @@ const Content = serie.Content;
       {images.map((image) => (
         <figure>
           <img src={image.url} alt={image.title ?? ""} class="fullscreen-image"/>
-          {(image.title || image.caption) && (
-            <figcaption>
-              {image.title && <strong>{image.title}</strong>}
-              {/* {image.caption && <p>{image.caption}</p>} */}
-            </figcaption>
-          )}
+
         </figure>
       ))}
             <div class="series-text">

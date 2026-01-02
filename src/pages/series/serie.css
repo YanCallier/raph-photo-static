@@ -11,14 +11,16 @@
 }
 
 .series-intro h1 {
-  font-size: 2.2rem;
-  /* font-weight: 400; */
   margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 .series-images {
   margin: 0;
   display: flex;
+  flex-direction: row;
   gap: 20px;
 }
 
@@ -56,4 +58,25 @@
   font-weight: 500;
   /* color: #ddd; */
   margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .series-images {
+    flex-direction: column-reverse;
+  }
+  .series {
+    padding: 0;
+  }
+
+  .series-intro {
+    margin: 1.2rem 2rem;
+  }
+
+  .series-text {
+    margin: 0 2rem;
+  }
+
+  .series-intro h1 {
+    margin-bottom: 0;
+  }
 }

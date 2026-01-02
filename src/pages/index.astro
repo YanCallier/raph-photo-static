@@ -37,8 +37,6 @@ const raw = pickedSerie ? await pickedSerie.rawContent() : "";
 
 const plain = raw.replace(/\s+/g, " ").trim();
 const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
-console.log('!!!!!!!!!!!!!!!!!', plain)
-
 
 ---
 
