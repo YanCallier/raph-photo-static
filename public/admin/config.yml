@@ -22,5 +22,15 @@ collections:
         widget: "list"
         fields:
           - { label: "Image", name: "url", widget: "image" }
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Légende", name: "caption", widget: "text" }
+          - {
+              label: "Titre (optionnel)",
+              name: "title",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Légende (optionnel)",
+              name: "caption",
+              widget: "text",
+              required: false,
+            }
