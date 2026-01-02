@@ -58,6 +58,10 @@ footer a:hover {
   letter-spacing: 0.05em;
 }
 
+.brand a {
+  text-decoration: none;
+  color: #fff;
+}
 nav a {
   margin-left: 1.8rem;
   color: white;

@@ -27,22 +27,21 @@ const series = Object.values(
 
     <!-- HEADER GLOBAL -->
     <header class="site-header">
-      <div class="brand">Raphaelle Brui</div>
+      <div class="brand"><a href="/">Raphaelle Brui</></div>
 
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
       <nav data-nav>
-        <a href="/">Accueil</a>
 
         {series.map(serie => (
-          <a href={`/series/${serie.frontmatter.slug}/`}>
+          <a href={`/${serie.frontmatter.slug}/`}>
             {serie.frontmatter.title}
           </a>
         ))}
 
-        <a href="/contact/">Contact</a>
+        
       </nav>
     </header>
 
@@ -52,6 +51,7 @@ const series = Object.values(
 
     <footer>
         <nav>
+          <a href="/contact/">Contact</a>
     <a
       href="https://revelles.fr/photographe/raphaelle-brui"
       target="_blank"

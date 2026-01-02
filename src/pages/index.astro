@@ -34,8 +34,8 @@ const pickedImage = images[Math.floor(Math.random() * images.length)]
 
 /* Teaser */
 const raw = pickedSerie ? await pickedSerie.rawContent() : "";
-
-const plain = raw.replace(/\s+/g, " ").trim();
+const noHtml = raw.replace(/<[^>]*>/g, "");
+const plain = noHtml.replace(/\s+/g, " ").trim();
 const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
 
 ---
@@ -52,7 +52,7 @@ const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
         <div class="overlay">
           <h2>{title}</h2>
           <p>{teaser}</p>
-          <a href={`/series/${slug}/`}>
+          <a href={`/${slug}/`}>
             Voir la série →
           </a>
         </div>

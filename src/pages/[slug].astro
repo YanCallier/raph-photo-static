@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "./serie.css";
+
+export async function getStaticPaths() {
+  const series = Object.values(
+    import.meta.glob("../../content/series/*.md", { eager: true })
+  );
+
+  return series.map((serie) => ({
+    params: { slug: serie.frontmatter.slug },
+    props: { serie },
+  }));
+}
+
+const { serie } = Astro.props;
+const { title, images } = serie.frontmatter;
+const Content = serie.Content;
+---
+
+<Layout>
+  <main class="series">
+
+    <section class="series-intro">
+      <h1>{title}</h1>
+    </section>
+
+    <div class="serie-content-container">
+    <section class="series-images">
+      {images.map((image) => (
+        <figure>
+          <img src={image.url} alt={image.title ?? ""} class="fullscreen-image"/>
+
+        </figure>
+      ))}
+    </section>
+    <section class="series-text">
+      <Content />
+    </section>
+    </div>
+
+  </main>
+</Layout>
+
