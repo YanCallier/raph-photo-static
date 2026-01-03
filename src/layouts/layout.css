@@ -56,11 +56,14 @@ footer a:hover {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 0.05em;
+  flex: 0 0 auto;
 }
 
 .brand a {
   text-decoration: none;
   color: #fff;
+  display: inline-block;
+  width: fit-content;
 }
 nav a {
   margin-left: 1.8rem;

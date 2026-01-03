@@ -6,24 +6,6 @@ import Layout from "../layouts/Layout.astro";
 const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 const series = Object.values(modules);
 
-/* Images enrichies */
-// const images = [];
-
-// for (const serie of series) {
-//   const imgs = serie.frontmatter?.images || [];
-//   for (const img of imgs) {
-//     images.push({
-//       ...img,
-//       serieSlug: serie.frontmatter.slug,
-//     });
-//   }
-// }
-
-// /* Image aléatoire */
-// const image = images.length
-//   ? images[Math.floor(Math.random() * images.length)]
-//   : null;
-
 const pickedSerie = series.length
 ? series[Math.floor(Math.random() * series.length)]
 : null;

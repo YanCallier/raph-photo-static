@@ -18,6 +18,8 @@ const { title, images } = serie.frontmatter;
 const Content = serie.Content;
 ---
 
+<script type="module" src="/scripts/series-text.js"></script>
+
 <Layout>
   <main class="series">
 
@@ -34,9 +36,21 @@ const Content = serie.Content;
         </figure>
       ))}
     </section>
-    <section class="series-text">
-      <Content />
-    </section>
+    <section class="serie-text" data-collapsible>
+      <section class="series-text" data-collapsible>
+  <div class="series-text__viewport">
+    <div class="series-text__content">
+      <Content/>
+    </div>
+  </div>
+
+  <button class="series-text__toggle" type="button" aria-expanded="false">
+    Lire la suite
+  </button>
+</section>
+  
+</section>
+
     </div>
 
   </main>
