@@ -6,41 +6,73 @@ import Layout from "../layouts/Layout.astro";
 const modules = import.meta.glob("../../content/series/*.md", { eager: true });
 const series = Object.values(modules);
 
-const pickedSerie = series.length
-? series[Math.floor(Math.random() * series.length)]
-: null;
+// Prépare un objet “léger” pour le navigateur : title, slug, teaser, images[]
+const seriesForClient = await Promise.all(
+  series.map(async (s) => {
+    const raw = await s.rawContent();
+    const noHtml = raw.replace(/<[^>]*>/g, "");
+    const plain = noHtml.replace(/\s+/g, " ").trim();
+    const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
 
-const { title, images, Content, slug, rawContent } = pickedSerie.frontmatter;
+    return {
+      title: s.frontmatter.title,
+      slug: s.frontmatter.slug,
+      teaser,
+      images: (s.frontmatter.images ?? []).map((img) => img.url),
+    };
+  })
+);
 
-const pickedImage = images[Math.floor(Math.random() * images.length)]
-
-/* Teaser */
-const raw = pickedSerie ? await pickedSerie.rawContent() : "";
-const noHtml = raw.replace(/<[^>]*>/g, "");
-const plain = noHtml.replace(/\s+/g, " ").trim();
-const teaser = plain.length > 120 ? plain.slice(0, 120) + "…" : plain;
-
+// Fallback SSR (pour éviter une home vide si JS désactivé)
+const fallbackSerie = seriesForClient[0] ?? null;
+const fallbackImage = fallbackSerie?.images?.[0] ?? "";
 ---
+
 
 
 
 <Layout title="Raphaelle Brui" bodyClass="home">
   <main class="hero">
-    {pickedSerie && (
+    {fallbackSerie && (
       <>
-        {/* <img src={image.url} alt={image.title} /> */}
-        <div class="hero fullscreen-image" style={`--hero-image: url(${pickedImage.url});`} />
+        <div
+          class="hero fullscreen-image"
+          id="home-hero"
+          style={`--hero-image: url(${fallbackImage});`}
+        />
 
         <div class="overlay">
-          <h2>{title}</h2>
-          <p>{teaser}</p>
-          <a href={`/${slug}/`}>
-            Voir la série →
-          </a>
+          <h2 id="home-title">{fallbackSerie.title}</h2>
+          <p id="home-teaser">{fallbackSerie.teaser}</p>
+          <a id="home-link" href={`/${fallbackSerie.slug}/`}>Voir la série →</a>
         </div>
+
+<script define:vars={{ seriesForClient }}>
+  (() => {
+    const hero = document.getElementById("home-hero");
+    const titleEl = document.getElementById("home-title");
+    const teaserEl = document.getElementById("home-teaser");
+    const linkEl = document.getElementById("home-link");
+
+    if (!hero || !titleEl || !teaserEl || !linkEl) return;
+    if (!seriesForClient || !seriesForClient.length) return;
+
+    const serie = seriesForClient[Math.floor(Math.random() * seriesForClient.length)];
+    const imgs = serie.images || [];
+    const imgUrl = imgs.length ? imgs[Math.floor(Math.random() * imgs.length)] : "";
+
+    if (imgUrl) hero.style.setProperty("--hero-image", `url(${imgUrl})`);
+    titleEl.textContent = serie.title;
+    teaserEl.textContent = serie.teaser;
+    linkEl.setAttribute("href", `/${serie.slug}/`);
+  })();
+</script>
+
       </>
     )}
   </main>
+</Layout>
+
 </Layout>
 
 
