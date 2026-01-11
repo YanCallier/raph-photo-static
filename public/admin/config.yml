@@ -34,3 +34,19 @@ collections:
               widget: "text",
               required: false,
             }
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Contact"
+        name: "contact"
+        file: "content/pages/contact.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+      - label: "Biographie"
+        name: "biographie"
+        file: "content/pages/biographie.md"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }

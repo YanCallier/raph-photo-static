@@ -1,18 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/genericPageContent.css";
+
+const pages = import.meta.glob("../../content/pages/*.md", { eager: true });
+const bio = pages["../../content/pages/bio.md"];
+const { frontmatter, Content } = bio;
 ---
 
 <Layout title="Biographie — Raphaelle Brui" bodyClass="page bio">
   <main class="page-content">
-    <h1>Biographie</h1>
+    <h1>{frontmatter.title}</h1>
 
-    <p>
-      Text
-    </p>
-
-    <p>
-      (Texte à compléter.)
-    </p>
+    <Content />
   </main>
 </Layout>
