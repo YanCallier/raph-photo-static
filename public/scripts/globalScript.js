@@ -10,3 +10,8 @@ document.addEventListener("click", (e) => {
     (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
   }
 });
+
+document.addEventListener("contextmenu", (e) => {
+  const img = e.target.closest("img, .fullscreen-image");
+  if (img) e.preventDefault();
+});
