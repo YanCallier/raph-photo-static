@@ -28,7 +28,6 @@ images:
   - url: /photos/aucoeurdezion/p11.jpg
   - url: /photos/aucoeurdezion/p12.jpg
   - url: /photos/aucoeurdezion/p13.jpg
-  - url: /photos/aucoeurdezion/p13.jpg
   - url: /photos/aucoeurdezion/rasta-select-1.jpg
   - url: /photos/aucoeurdezion/rasta-select-2.jpg
   - url: /photos/aucoeurdezion/rasta-select-3.jpg
@@ -43,6 +42,7 @@ images:
   - url: /photos/aucoeurdezion/webaddis-dub-club-part-4-king-shiloh-sound-system2022-2.jpg
   - url: /photos/aucoeurdezion/webaddis-dub-club-part-4-king-shiloh-sound-system2022-22.jpg
   - url: /photos/aucoeurdezion/webmajesticoct-21rb3.jpg
+  - url: /photos/aucoeurdezion/webmajesticoct-21rb8.jpg
   - url: /photos/aucoeurdezion/webmajesticoct-21rb9.jpg
   - url: /photos/aucoeurdezion/webmajesticoct-21rb14.jpg
   - url: /photos/aucoeurdezion/webmajesticoct-21rb15.jpg

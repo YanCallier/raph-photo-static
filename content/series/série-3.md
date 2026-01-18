@@ -3,6 +3,13 @@ title: La route de la vie
 slug: la-route-de-la-vie
 images:
   - url: /photos/laroutedelavie/1.jpg
+  - url: /photos/laroutedelavie/2.jpg
+  - url: /photos/laroutedelavie/4.jpg
+  - url: /photos/laroutedelavie/5.jpg
+  - url: /photos/laroutedelavie/6.jpg
+  - url: /photos/laroutedelavie/7.jpg
+  - url: /photos/laroutedelavie/8.jpg
+  - url: /photos/laroutedelavie/9.jpg
   - url: /photos/laroutedelavie/10.jpg
   - url: /photos/laroutedelavie/12.jpg
   - url: /photos/laroutedelavie/13.jpg
@@ -12,7 +19,6 @@ images:
   - url: /photos/laroutedelavie/17.jpg
   - url: /photos/laroutedelavie/18.jpg
   - url: /photos/laroutedelavie/19.jpg
-  - url: /photos/laroutedelavie/2.jpg
   - url: /photos/laroutedelavie/20.jpg
   - url: /photos/laroutedelavie/21.jpg
   - url: /photos/laroutedelavie/22.jpg
@@ -29,12 +35,6 @@ images:
   - url: /photos/laroutedelavie/35.jpg
   - url: /photos/laroutedelavie/36.jpg
   - url: /photos/laroutedelavie/37.jpg
-  - url: /photos/laroutedelavie/4.jpg
-  - url: /photos/laroutedelavie/5.jpg
-  - url: /photos/laroutedelavie/6.jpg
-  - url: /photos/laroutedelavie/7.jpg
-  - url: /photos/laroutedelavie/8.jpg
-  - url: /photos/laroutedelavie/9.jpg
 ---
 
 <b>Sur la Route de la Vie, du passé au présent</b><br/>

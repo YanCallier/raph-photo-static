@@ -1,0 +1,51 @@
+
+.bio-content {
+    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bio-content .v-center {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.bio-content p {
+  max-width: 720px;
+  line-height: 1.75;
+font-style: italic;
+  opacity: 0.75;
+}
+
+.bio-atmo {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  
+  margin: 2rem 0;
+  filter: brightness(0.85);
+}
+
+.pos-top{
+object-position: center 10%;
+}
+.pos-mid{
+object-position: center 50%;
+}
+.pos-bottom{
+object-position: center 60%;
+}
+.pos-test{
+object-position: center 50%;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .bio-content {
+    padding-top: 40px;
+  }
+}

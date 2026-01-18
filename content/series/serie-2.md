@@ -3,7 +3,14 @@ title: Church
 slug: church
 images:
   - url: /photos/church/1.jpg
-  - url: /photos/church/church-eth-soth-brui-1.jpg
+  - url: /photos/church/church-eth-soth-brui-2.jpg
+  - url: /photos/church/church-eth-soth-brui-3.jpg
+  - url: /photos/church/church-eth-soth-brui-4.jpg
+  - url: /photos/church/church-eth-soth-brui-5.jpg
+  - url: /photos/church/church-eth-soth-brui-6.jpg
+  - url: /photos/church/church-eth-soth-brui-7.jpg
+  - url: /photos/church/church-eth-soth-brui-8.jpg
+  - url: /photos/church/church-eth-soth-brui-9.jpg
   - url: /photos/church/church-eth-soth-brui-10.jpg
   - url: /photos/church/church-eth-soth-brui-11.jpg
   - url: /photos/church/church-eth-soth-brui-12.jpg
@@ -14,7 +21,6 @@ images:
   - url: /photos/church/church-eth-soth-brui-17.jpg
   - url: /photos/church/church-eth-soth-brui-18.jpg
   - url: /photos/church/church-eth-soth-brui-19.jpg
-  - url: /photos/church/church-eth-soth-brui-2.jpg
   - url: /photos/church/church-eth-soth-brui-20.jpg
   - url: /photos/church/church-eth-soth-brui-21.jpg
   - url: /photos/church/church-eth-soth-brui-22.jpg
@@ -23,13 +29,6 @@ images:
   - url: /photos/church/church-eth-soth-brui-25.jpg
   - url: /photos/church/church-eth-soth-brui-26.jpg
   - url: /photos/church/church-eth-soth-brui-27.jpg
-  - url: /photos/church/church-eth-soth-brui-3.jpg
-  - url: /photos/church/church-eth-soth-brui-4.jpg
-  - url: /photos/church/church-eth-soth-brui-5.jpg
-  - url: /photos/church/church-eth-soth-brui-6.jpg
-  - url: /photos/church/church-eth-soth-brui-7.jpg
-  - url: /photos/church/church-eth-soth-brui-8.jpg
-  - url: /photos/church/church-eth-soth-brui-9.jpg
   - url: /photos/church/eth-fev2020-bush-rb-3.jpg
   - url: /photos/church/eth-fev2020-lalibela-rb-5.jpg
   - url: /photos/church/f1000011.jpg

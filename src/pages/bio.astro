@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/genericPageContent.css";
+import "../styles/bio.css";
 
 const pages = import.meta.glob("../../content/pages/*.md", { eager: true });
 const bio = pages["../../content/pages/bio.md"];
@@ -8,9 +9,10 @@ const { frontmatter, Content } = bio;
 ---
 
 <Layout title="Biographie — Raphaelle Brui" bodyClass="page bio">
-  <main class="page-content">
+  <main class="page-content bio-content">
     <h1>{frontmatter.title}</h1>
-
-    <Content />
+      <div class="v-center">
+        <Content />
+      </div>
   </main>
 </Layout>
